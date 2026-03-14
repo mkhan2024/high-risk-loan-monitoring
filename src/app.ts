@@ -1,0 +1,21 @@
+import express from 'express';
+import { requestLogger, errorLogger } from './api/v1/middleware/loggingMiddleware';
+import errorHandler from './api/v1/middleware/errorHandler';
+import authRoutes from './api/v1/routes/authRoutes';
+import userRoutes from './api/v1/routes/userRoutes';
+
+const app = express();
+const PORT = 3000;
+
+app.use(express.json());
+app.use(requestLogger);
+
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/users', userRoutes);
+
+app.use(errorLogger);
+app.use(errorHandler);
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
