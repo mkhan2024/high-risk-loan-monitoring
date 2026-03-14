@@ -9,14 +9,14 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use(requestLogger);
+app.use(requestLogger);   // Logging first
 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/loans', loanRoutes);
 
 app.use(errorLogger);
-app.use(errorHandler);
+app.use(errorHandler);    // Error handler last
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
