@@ -4,7 +4,7 @@ import { HTTP_STATUS } from '../../../constants/httpConstants';
 
 export const getUser = async (req: Request, res: Response) => {
     try {
-        const uid = req.params.uid;
+        const uid = String(req.params.uid);  // Fixed type issue
         const userRecord = await auth.getUser(uid);
         res.status(HTTP_STATUS.OK).json({
             success: true,

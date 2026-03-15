@@ -17,20 +17,16 @@ router.post('/signin', (req: Request, res: Response) => {
 
     let mockToken: string;
     let mockUid: string;
-    let mockRole: string;
 
     if (email === 'officer@pixell-river.com') {
         mockToken = 'officer-token-abc123';
         mockUid = 'officer-uid-001';
-        mockRole = 'officer';
     } else if (email === 'manager@pixell-river.com') {
         mockToken = 'manager-token-def456';
         mockUid = 'manager-uid-002';
-        mockRole = 'manager';
     } else if (email === 'admin@pixell-river.com') {
         mockToken = 'admin-token-ghi789';
         mockUid = 'admin-uid-003';
-        mockRole = 'admin';
     } else {
         return res.status(401).json({
             success: false,

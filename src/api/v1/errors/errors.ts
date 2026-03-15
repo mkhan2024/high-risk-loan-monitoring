@@ -36,3 +36,9 @@ export class AuthorizationError extends AppError {
         super(message, code, statusCode);
     }
 }
+
+export class ResourceNotFoundError extends AppError {
+    constructor(message: string, code: string) {
+        super(message, code, HTTP_STATUS.NOT_FOUND);
+    }
+}

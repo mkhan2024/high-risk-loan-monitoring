@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { auth } from '../../config/firebaseConfig';
+import { auth } from '../../../config/firebaseConfig';
 import { AuthenticationError } from '../errors/errors';
-import { ERROR_CODES } from '../../constants/errorCodes';
 
 const authenticate = async (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
@@ -15,7 +14,7 @@ const authenticate = async (req: Request, res: Response, next: NextFunction) => 
     try {
         const decodedToken = await auth.verifyIdToken(idToken);
         res.locals.uid = decodedToken.uid;
-        res.locals.role = decodedToken.role || 'user';  // fallback if no role set
+        res.locals.role = decodedToken.role || 'user';
         next();
     } catch (error) {
         throw new AuthenticationError('Unauthorized: Invalid token', 'TOKEN_INVALID');

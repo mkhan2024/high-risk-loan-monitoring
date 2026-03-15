@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import { AuthorizationError } from '../errors/errors';
-import { ERROR_CODES } from '../../constants/errorCodes';
 
 interface AuthorizationOptions {
     roles: string[];
